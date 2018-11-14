@@ -121,16 +121,16 @@ class userinterface (QDialog):
                                     plus=0
                                 else:
                                     minus=0
-                                if up>abs(j-plus+minus) or down>abs(plus+minus):
+                                if up<abs(j-(plus+minus)) or down<abs(j-(plus+minus)):
                                     if up<down:
                                         output.append([content[j][0],content[j][1],"-->",content[j-1920*up][0],content[j-1920*up][1],
-                                                  content[j-1920*up][2],content[j-1920*up][3],content[j-1920*up][4]])
+                                                  content[j-1920*up][2],content[j-1920*up][3],content[j-1920*up][4],up,down,abs(j-(plus+minus))])
                                     else:
                                         output.append([content[j][0],content[j][1],"-->",content[j+1920*down][0],content[j+1920*down][1],
-                                                  content[j+1920*down][2],content[j+1920*down][3],content[j+1920*down][4]])                                        
+                                                  content[j+1920*down][2],content[j+1920*down][3],content[j+1920*down][4],up,down,abs(j-(plus+minus))])                                        
                                 else:
                                     output.append([content[j][0],content[j][1],"-->",content[plus+minus][0],content[plus+minus][1],
-                                                  content[plus+minus][2],content[plus+minus][3],content[plus+minus][4]])
+                                                  content[plus+minus][2],content[plus+minus][3],content[plus+minus][4],up,down,abs(j-(plus+minus))])
                 
                 
                 workbook = xlsxwriter.Workbook(self.xlsxlabel.text())
