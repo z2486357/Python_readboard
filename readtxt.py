@@ -6,4 +6,12 @@ for line in fh.readlines():
     content.append( y )
 fh.close()
 output=[]
-print(int(content[0][0]))
+
+def canbetransfertofloat(input):
+    try:
+        float(input)
+        return True
+    except:
+        return False
+
+print(canbetransfertofloat(content[0][3]))
