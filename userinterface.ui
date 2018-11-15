@@ -110,14 +110,24 @@
   <widget class="QLabel" name="unvisible">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>40</y>
+     <x>280</x>
+     <y>430</y>
      <width>47</width>
      <height>12</height>
     </rect>
    </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="whitestandard">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>30</y>
+     <width>211</width>
+     <height>51</height>
+    </rect>
    </property>
   </widget>
  </widget>

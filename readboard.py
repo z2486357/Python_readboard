@@ -30,9 +30,9 @@ class userinterface (QDialog):
     @pyqtSlot()
     def on_GO_clicked(self):
         try:
-            if (self.pnglabel.text()==self.unvisible.text() or self.txtlabel.text()==self.unvisible.text()):
+            if (self.pnglabel.text()==self.unvisible.text() or self.txtlabel.text()==self.unvisible.text() or self.whitestandard.text()==""):
                 QMessageBox.information(self,' ',"go to choose file")
-            else:       
+            else: 
                 I = Image.open(self.pnglabel.text()) 
                 global I_array
                 I_array= np.array(I)
@@ -45,19 +45,20 @@ class userinterface (QDialog):
                     global record
                     global I_array
                     record[recordnum].append([i,j])
-                    I_array[i][j][0]=0
+                    I_array[i][j][0]=255
                     I_array[i][j][1]=0
                     I_array[i][j][2]=0
-                    if I_array[i][j+1][0]>128 and I_array[i][j+1][1]>128 and I_array[i][j+1][2]>128:
+                    standard=int(self.whitestandard.text())
+                    if I_array[i][j+1][0]>standard and I_array[i][j+1][1]>standard and I_array[i][j+1][2]>standard:
                         findaround(i,j+1,recordnum)
-                    if I_array[i][j-1][0]>128 and I_array[i][j-1][1]>128 and I_array[i][j-1][2]>128:
+                    if I_array[i][j-1][0]>standard and I_array[i][j-1][1]>standard and I_array[i][j-1][2]>standard:
                         findaround(i,j-1,recordnum)
-                    if I_array[i+1][j][0]>128 and I_array[i+1][j][1]>128 and I_array[i+1][j][2]>128:
+                    if I_array[i+1][j][0]>standard and I_array[i+1][j][1]>standard and I_array[i+1][j][2]>standard:
                         findaround(i+1,j,recordnum)
-                        
+                standard=int(self.whitestandard.text())        
                 for i in range(0,len(I_array)):
                     for j in range(0,len(I_array[0])):
-                        if I_array[i][j][0]>128 and I_array[i][j][1]>128 and I_array[i][j][2]>128:
+                        if I_array[i][j][0]>standard and I_array[i][j][1]>standard and I_array[i][j][2]>standard:
                             findaround(i,j,recordnum)
                             recordnum+=1
                 
@@ -68,12 +69,12 @@ class userinterface (QDialog):
                     for j in range(0,len(record[i])):
                         totali+=record[i][j][0]
                         totalj+=record[i][j][1]
-                    totali=int(totali/len(record[i]))
-                    totalj=int(totalj/len(record[i]))
+                    totali=int(round(totali/len(record[i])))
+                    totalj=int(round(totalj/len(record[i])))
                     center.append([totali,totalj])
                 
                 """output wuth the mark on center"""
-                I_array= np.array(I)
+                """I_array= np.array(I)"""
                 for i in range(0,len(center)):
                     I_array[center[i][0]][center[i][1]][0]=0
                     I_array[center[i][0]][center[i][1]][1]=0
@@ -147,8 +148,6 @@ app=QApplication(sys.argv)
 widget=userinterface()
 widget.show()
 sys.exit(app.exec_())
-    
-
 
 
 
