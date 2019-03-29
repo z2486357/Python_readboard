@@ -141,7 +141,7 @@ class userinterface (QDialog):
                 workbook.close()
                 QMessageBox.information(self,' ',"Finish")
         except:
-            QMessageBox.information(self,' ',"Something wrong. Close and try again")
+            QMessageBox.information(self,' ',"Something wrong. Go through the right step or close and try again")
             
                 
 app=QApplication(sys.argv)

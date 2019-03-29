@@ -1,3 +1,7 @@
 *.py linguist-language=python
 *.html linguist-language=python
 *.pyd linguist-language=python
+*.txt linguist-language=python
+*.png linguist-language=python
+*.ui linguist-language=python
+*.pyc linguist-language=python
