@@ -79,6 +79,7 @@ class userinterface (QDialog):
                     I_array[center[i][0]][center[i][1]][0]=0
                     I_array[center[i][0]][center[i][1]][1]=0
                     I_array[center[i][0]][center[i][1]][2]=0
+                    
                 I_array=I_array[:,:,0:3]
                 global pngfileName
                 matplotlib.image.imsave(pngfileName[:-4]+"_withpoint.png", I_array)
